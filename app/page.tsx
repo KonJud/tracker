@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { poppins } from "./lib/font";
 import Hero from '../public/hero.jpg'
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -25,11 +26,11 @@ export default function Home() {
         <p className='text-lg mb-6'>
           Track, Trace and Triumph - Your orders, your control. Welcome to the future fo seamless delivery monitoring.
         </p>
-        <a 
+        <Link 
           className="bg-purple-100 text-xl text-purple-500 px-6 py-2 rounded"
           href="/login">
           Login
-        </a>
+        </Link>
       </div>
     </main>
   );
