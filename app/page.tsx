@@ -1,10 +1,20 @@
 import Image from "next/image";
 import { poppins } from "./lib/font";
+import Hero from '../public/hero.jpg'
 
 export default function Home() {
   return (
     <main className="flex h-screen relative items-center justify-center overflow-hidden">
-      <p className={`${poppins.className} text-purple-100 cursor-pointer font-bold text-6xl absolute top-4 left-4`}>
+      
+      <Image
+        src={Hero}
+        alt='hero image'
+        layout="fill"
+        quality={100}
+        className="absolute inset-0 h-screen w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black opacity-50" />
+      <p className={`${poppins.className} text-purple-100 cursor-pointer h-auto w-auto font-bold text-6xl absolute top-4 left-4`}>
         Tracker
       </p>
 
