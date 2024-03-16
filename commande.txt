@@ -5,3 +5,13 @@ npm install @prisma/client
 npm i ts-node --save-dev
 npm i bcryptjs
 npx prisma migrate dev --name initial-migration // Pour la migration
+npm i @types/bcryptjs
+
+"prisma" : {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  }, // dans package.json pour l'encemensement de la base de donnée
+
+
+npx prisma db seed
+npx prisma db push // pour pousser les modification faite dans la bd
+npx prisma studio
