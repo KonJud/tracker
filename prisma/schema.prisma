@@ -30,6 +30,7 @@ model Order {
   userId String
   user User @relation(fields: [userId], references: [id])
   tracking Tracking?
+  categories Category[]
   description String
   price Float
   destination String
@@ -37,6 +38,14 @@ model Order {
   createdAt DateTime @default(now())
   updatedAt DateTime
 }
+
+model Category {
+  id String @id @default(cuid())
+  name String
+  orders Order[]
+}
+
+
 
 model Tracking {
   @@map("tracking-info")
@@ -46,7 +55,7 @@ model Tracking {
   order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
   status String @default("pending")
   latitude String? @map("lat")
-  longitiude String? @map("lng")
+  longitude String? @map("lng")
   location String?
   courier String? @default("Brokang Courier")
   couriersNumber String?
