@@ -4,6 +4,8 @@ npx prisma init --datasource-provider sqlite
 npm install @prisma/client
 npm i ts-node --save-dev
 npm i bcryptjs
+
+
 npx prisma migrate dev --name initial-migration // Pour la migration
 npm i @types/bcryptjs
 
@@ -15,3 +17,5 @@ npm i @types/bcryptjs
 npx prisma db seed
 npx prisma db push // pour pousser les modification faite dans la bd
 npx prisma studio
+
+npm install recharts

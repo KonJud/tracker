@@ -24,7 +24,7 @@ async function main () {
                 }
             })
         })
-    )
+    ) 
     console.log(`Seeded ${orders.length} orders`)
 
     await Promise.all(

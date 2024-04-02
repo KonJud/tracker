@@ -46,7 +46,7 @@ export const users = [
   ];
   
   export const orders = [
-    {
+    { 
       id: "1",
       productImage: "https://loremflickr.com/640/480",
       productName: "Awesome Steel Computer",
