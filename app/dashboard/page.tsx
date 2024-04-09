@@ -4,8 +4,11 @@ import Cards from '../ui/dashboard/Cards'
 import LatestOrders from '../ui/dashboard/LatestOrders'
 import DashUsers from "@/app/ui/dashboard/DashUsers";
 import OrderChat from '../ui/dashboard/OrderChat';
+import {getCardData, getChartData} from "@/app/lib/prisma";
 
-function Dashboard() {
+async function Dashboard() {
+    const cardData = await getCardData()
+    const chartData = await getChartData()
   return (
     <main className={"h-screen w-full overflow-auto"}>
       <Upbar>
@@ -15,10 +18,26 @@ function Dashboard() {
       </Upbar>
 
       <div className='grid my-5 grid-cols-2 md:grid-cols-4 gap-6 lg:grid-cols-4'>
-        <Cards title="Pending" value="20" type="pending" />
-        <Cards title="On the way" value="20" type="delivered" />
-        <Cards title="Delivered" value="20" type='delivered' />
-        <Cards title='Reviews' value="20" type='reviews' />
+        <Cards
+            title="Pending"
+            value={cardData.numberOfOrderPending}
+            type="pending"
+        />
+        <Cards
+            title="On the way"
+            value={cardData.numberOfOrderDelivered}
+            type="delivered"
+        />
+        <Cards
+            title="Delivered"
+            value={cardData.numberOfOrderDelivered}
+            type='delivered'
+        />
+        <Cards
+            title='Reviews'
+            value="20"
+            type='reviews'
+        />
       </div>
 
       <div className="grid md:flex-col flex-col-reverse">
@@ -45,7 +64,7 @@ function Dashboard() {
         <h1 className={"text-2xl mb-2"}>
           Chart Section
         </h1>
-        <OrderChat/>
+        <OrderChat chartData={chartData}/>
       </div>
     </main>
   )

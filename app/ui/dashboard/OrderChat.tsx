@@ -57,14 +57,26 @@ const data = [
     { name: '39', uv: -66, pv: 154 },
     { name: '40', uv: -50, pv: 186 },
 ];
-function OrderChat () {
+
+function OrderChat ({
+    chartData
+}: {
+    chartData: [
+        {
+            pending: number
+            delivered: number
+            "on the way": number
+            userId: number
+        }
+    ]
+}) {
     return (
         <>
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     width={500}
                     height={300}
-                    data={data}
+                    data={chartData}
                     margin={{
                     top: 5,
                         right: 30,
@@ -73,14 +85,15 @@ function OrderChat () {
                     }}
                     >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="userId" />
                     <YAxis />
                     <Tooltip />
                     <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
                     <ReferenceLine y={0} stroke="#000" />
-                    <Brush dataKey="name" height={30} stroke="#8884d8" />
-                    <Bar dataKey="pv" fill="#8884d8" />
-                    <Bar dataKey="uv" fill="#82ca9d" />
+                    <Brush dataKey="userId" height={30} stroke="#8884d8" />
+                    <Bar dataKey="on the way" fill="#8884d8" />
+                    <Bar dataKey="delivered" fill="#82ca9d" />
+                    <Bar dataKey="pending" fill="#decd1d" />
                 </BarChart>
             </ResponsiveContainer>
         </>

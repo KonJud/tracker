@@ -2,10 +2,11 @@ import { users } from '@/app/lib/seed-data'
 import Image from 'next/image'
 import React from 'react'
 import OrderStatus from '../components/OrderStatus'
+import {getUser} from "@/app/lib/prisma";
 
-function DashUsers() {
+async function DashUsers() {
 
-    const dashUsers = users
+    const dashUsers = await getUser ()
   return (
     <div className='w-full h-full bg-purple-200 rounded-md p-2'>
         {/* desktop device*/}

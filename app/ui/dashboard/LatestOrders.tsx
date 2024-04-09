@@ -3,10 +3,13 @@ import Image from 'next/image'
 import React from 'react'
 import OrderStatus from '../components/OrderStatus'
 import {formatDate} from "@/app/lib/utils";
+import { getLastFiveOrders } from "@/app/lib/prisma"
 
-function LatestOrders() {
+async function LatestOrders() {
 
-    const latestOrders = orders.slice(0, 5)
+
+  const latestOrders = await getLastFiveOrders() // la fonction pour selectionner les 5 dernières commandes dans le tableau de bord
+
   return (
     <div className='w-full h-full bg-purple-200 rounded-md p-2'>
         {/* desktop device*/}
